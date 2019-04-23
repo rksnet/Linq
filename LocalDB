@@ -1,0 +1,105 @@
+ public static class LocalDb
+    {
+        public static List<Employee> GetEmployee()
+        {
+            Employee Obj = new Employee();
+            return Obj.GetEmployee();
+        }
+        public static List<EmployeeDetails> EmployeeDetails()
+        {
+            EmployeeDetails Obj = new EmployeeDetails();
+            return Obj.GetEmployeeDetails();
+        }
+        public static List<EmployeeSalary> GetEmployeeSalary()
+        {
+            EmployeeSalary Obj = new EmployeeSalary();
+            return Obj.GetEmployeeSalary();
+        }
+        public static List<Student> GetStudent()
+        {
+            Student Obj = new Student();
+            return Obj.GetStudent();
+        }
+    }
+
+    public class Employee
+    {
+        public int EmpId { get; set; }
+        public string EmpName { get; set; }
+        public string EmpEmail { get; set; }
+        public int DetailId { get; set; }
+        public int SalId { get; set; }
+
+        public List<Employee> GetEmployee()
+        {
+            var Result = new List<Employee>()
+            {
+                new Employee() {EmpId = 1, EmpName = "Tom", EmpEmail = "tom@gmail.com", DetailId = 1, SalId = 1 },
+                new Employee() {EmpId = 2, EmpName = "Adom", EmpEmail = "adom@gmail.com" , DetailId = 2, SalId = 2},
+                new Employee() {EmpId = 3, EmpName = "Mery", EmpEmail = "mery@gmail.com", DetailId = 3, SalId = 3},
+                new Employee() {EmpId = 4, EmpName = "John", EmpEmail = "John@gmail.com", DetailId = 4 ,SalId = 1},
+                new Employee() {EmpId = 5, EmpName = "Sam", EmpEmail = "sam@gmail.com", DetailId = 5, SalId = 4}
+            };
+            return Result;
+        }
+    }
+    
+    public class EmployeeDetails
+    {
+        public int Id { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+
+        public List<EmployeeDetails> GetEmployeeDetails()
+        {
+            var Result = new List<EmployeeDetails>()
+            {
+                new EmployeeDetails() {Id = 1, Address = "Patna", City = "Nawada" },
+                new EmployeeDetails() {Id = 2, Address = "BiharSharif", City = "Bihar" },
+                new EmployeeDetails() {Id = 3, Address = "Pune", City = "Pune Outer" }
+                //new EmployeeDetails() {Id = 4, Address = "Delhi", City = "Uttam Nagar" },
+                //new EmployeeDetails() {Id = 5, Address = "Kolkata", City = "Salt Lake" }
+            };
+            return Result;
+        }
+    }
+
+
+    public class EmployeeSalary
+    {
+        public int Id { get; set; }
+        public double Salary { get; set; }
+
+        public List<EmployeeSalary> GetEmployeeSalary()
+        {
+            var Result = new List<EmployeeSalary>()
+            {
+                new EmployeeSalary() {Id = 1, Salary = 12000},
+                new EmployeeSalary() {Id = 2, Salary = 12000 },
+                new EmployeeSalary() {Id = 3, Salary = 12000 },
+                new EmployeeSalary() {Id = 4, Salary = 12000 }
+            };
+            return Result;
+        }
+    }
+
+    public class Student
+    {
+        public int StudId { get; set; }
+        public string StudName { get; set; }
+        public string StudEmail { get; set; }
+
+
+        public List<Student> GetStudent()
+        {
+            var Result = new List<Student>()
+            {
+                new Student() {StudId = 1, StudName = "Ajay", StudEmail = "ajay@gmail.com" },
+                new Student() {StudId = 2, StudName = "Vijay", StudEmail = "vijay@gmail.com" },
+                new Student() {StudId = 3, StudName = "Mohan", StudEmail = "mohan@gmail.com" },
+                new Student() {StudId = 4, StudName = "Sonam", StudEmail = "sonam@gmail.com" },
+                new Student() {StudId = 5, StudName = "Moni", StudEmail = "moni@gmail.com" },
+            };
+            return Result;
+        }
+    }
