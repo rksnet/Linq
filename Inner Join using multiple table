@@ -1,0 +1,28 @@
+ var QuerySyntax = (from Emp in EmpData
+                        join EmpDetail in EmpDetails
+                        on Emp.DetailId equals EmpDetail.Id
+                        join sal in EmpSalary on Emp.SalId equals sal.Id
+                        select new
+                        {
+                            Name = Emp.EmpName,
+                            Email = Emp.EmpEmail,
+                            Address = EmpDetail.Address,
+                            City = EmpDetail.City,
+                            Salary = sal.Salary
+                        }).ToList();
+
+var MethodSyntax = EmpData.Join(EmpDetails,
+                         emp => emp.DetailId,
+                        detail => detail.Id,
+                        (emp, detail) => new {emp, detail})
+
+                       .Join(EmpSalary, empl => empl.emp.SalId , sal => sal.Id, (empl, sal) => new {empl, sal})
+
+                       .Select(x => new
+                        {
+                            Id = x.empl.emp.EmpId,
+                            Name = x.empl.emp.EmpName,
+                            Address = x.empl.detail.Address,
+                            Email = x.empl.emp.EmpEmail,
+                            Salary = x.sal.Salary
+                        }).ToList();
