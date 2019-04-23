@@ -1,0 +1,24 @@
+/* Data is from LocalDb (attached in different file)*/
+List<Employee> EmpData = LocalDb.GetEmployee();
+List<EmployeeDetails> EmpDetails = LocalDb.EmployeeDetails();
+
+var QuerySyntax = (from Emp in EmpData
+              join EmpDetail in EmpDetails
+              on Emp.DetailId equals EmpDetail.Id
+              select new
+                  {
+                      Name = Emp.EmpName,
+                      Email = Emp.EmpEmail,
+                      Address = EmpDetail.Address,
+                      City = EmpDetail.City
+                  }).ToList();
+
+var MethodSyntax = EmpData.Join(EmpDetails,
+                         emp => emp.DetailId,
+                         detail => detail.Id,
+                        (emp, detail) => new {
+                            Id = emp.EmpId,
+                            Name=  emp.EmpName,
+                            Address = detail.Address,
+                            Email = emp.EmpName
+                        }).ToList();
