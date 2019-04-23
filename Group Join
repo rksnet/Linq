@@ -1,0 +1,68 @@
+var Data5 = from dept in DeptData
+            join emp in EmpData
+            on dept.Id equals emp.DeptId into EmpDept
+            select new { dept, EmpDept };
+
+var Data6 = DeptData.GroupJoin(EmpData, dept => dept.Id, emp => emp.DeptId, (dept, emp) => new { emp, dept });
+
+foreach (var Dept in Data5)
+{
+//Dept.dept.Name
+foreach (var emp in Dept.EmpDept)
+{
+  //emp.EmpName
+}
+}
+
+foreach (var Dept in Data6)
+{
+//Dept.dept.Name
+foreach (var emp in Dept.emp)
+{
+  //emp.EmpName
+}
+}
+
+
+
+
+public class Employee
+    {
+        public int EmpId { get; set; }
+        public string EmpName { get; set; }
+        public string EmpEmail { get; set; }
+        public int DetailId { get; set; }
+        public int SalId { get; set; }
+        public int DeptId { get; set; }
+
+        public List<Employee> GetEmployee()
+        {
+            var Result = new List<Employee>()
+            {
+                new Employee() {EmpId = 1, EmpName = "Tom", EmpEmail = "tom@gmail.com", DetailId = 1, SalId = 1 , DeptId = 1},
+                new Employee() {EmpId = 2, EmpName = "Adom", EmpEmail = "adom@gmail.com" , DetailId = 2, SalId = 2, DeptId = 2},
+                new Employee() {EmpId = 3, EmpName = "Mery", EmpEmail = "mery@gmail.com", DetailId = 3, SalId = 3, DeptId = 1},
+                new Employee() {EmpId = 4, EmpName = "John", EmpEmail = "John@gmail.com", DetailId = 4 ,SalId = 1, DeptId = 2},
+                new Employee() {EmpId = 5, EmpName = "Sam", EmpEmail = "sam@gmail.com", DetailId = 5, SalId = 4, DeptId = 3}
+            };
+            return Result;
+        }
+    }
+
+
+    public class Department
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public List<Department> GetDepartment()
+        {
+            var Result = new List<Department>()
+            {
+                new Department() {Id = 1, Name="HR" },
+                new Department() {Id = 2, Name="Sales" },
+                new Department() {Id = 3, Name="Accounts" }
+            };
+            return Result;
+        }
+    }
